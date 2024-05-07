@@ -1,8 +1,10 @@
 package com.mycompany.es_19;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Scanner;
 import java.util.List;
+import java.util.Scanner;
 
 public class Menu {
 
@@ -20,18 +22,28 @@ public class Menu {
         return instance;
     }
 
-    public void menu() throws InventoryException {
+    public void menu() throws ClassNotFoundException {
         boolean exit = false;
         while (!exit) {
-            int choice = displayMenuAndGetChoice();
-            switch (choice) {
-                case 1 -> addGame();
-                case 2 -> removeGame();
-                case 3 -> displayInventory();
-                case 4 -> searchGamesByPlatform();
-                case 5 -> searchGamesByGenre();
-                case 6 -> exit = true;
-                default -> System.out.println("Scelta non valida. Riprova.");
+            try {
+                int choice = displayMenuAndGetChoice();
+                switch (choice) {
+                    case 1 -> addGame();
+                    case 2 -> removeGame();
+                    case 3 -> displayInventory();
+                    case 4 -> searchGamesByPlatform();
+                    case 5 -> searchGamesByGenre();
+                    case 6 -> printInventoryToFile();
+                    case 7 -> readInventoryFromFile();
+                    case 8 -> exit = true;
+                    default -> System.out.println("Scelta non valida. Riprova.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Input non valido. Inserisci un numero.");
+            } catch (InventoryException e) {
+                System.out.println("Errore nell'operazione: " + e.getMessage());
+            } catch (IOException e) {
+                System.out.println("Errore di I/O: " + e.getMessage());
             }
         }
     }
@@ -43,13 +55,15 @@ public class Menu {
         System.out.println("3. Visualizza inventario");
         System.out.println("4. Ricerca giochi per piattaforma");
         System.out.println("5. Ricerca giochi per genere");
-        System.out.println("6. Esci");
+        System.out.println("6. Stampare inventario su file");
+        System.out.println("7. Leggere inventario da file");
+        System.out.println("8. Esci");
 
         System.out.print("Scegli un'opzione: ");
         return Integer.parseInt(scanner.nextLine());
     }
 
-    private void addGame() {
+    private void addGame() throws InventoryException {
         System.out.println("Inserisci le informazioni del gioco:");
 
         System.out.print("Nome: ");
@@ -148,4 +162,22 @@ public class Menu {
             System.out.println("Nome: " + game.getName() + ", Piattaforma: " + game.getPlatform() + ", Genere: " + game.getGenre() + ", Data di rilascio: " + game.getReleaseDate());
         }
     }
+
+    private static void printInventoryToFile() throws IOException {
+        System.out.print("Inserisci il nome del file in cui stampare l'inventario: ");
+        String fileName = scanner.nextLine();
+        inventory.printInventoryToFile(fileName);
+    }
+
+    private static void readInventoryFromFile() throws ClassNotFoundException {
+        System.out.print("Inserisci il nome del file da cui leggere l'inventario: ");
+        String fileName = scanner.nextLine();
+
+        Inventory newInventory = Inventory.readInventoryFromFile(fileName);
+        inventory.getGames().clear();
+        inventory.getGames().addAll(newInventory.getGames());
+        System.out.println("Inventario letto correttamente dal file: " + fileName);
+    }
+
+
 }

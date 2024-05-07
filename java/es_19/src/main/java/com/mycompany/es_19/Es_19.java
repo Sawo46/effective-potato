@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Es_19 {
 
-    public static void main(String[] args) throws InventoryException {
+    public static void main(String[] args) throws InventoryException, ClassNotFoundException {
         // Creazione di alcuni giochi
         Game game1 = new Game("The Witcher 3", "PC", "RPG", LocalDate.of(2015, 5, 19));
         Game game2 = new Game("Beat Saber", "VR", "Rhythm", LocalDate.of(2018, 5, 1));

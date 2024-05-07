@@ -1,5 +1,10 @@
 package com.mycompany.es_19;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,8 +18,11 @@ public class Inventory {
     }
 
     public void addGame(Game game) {
-        games.add(game);
-    }
+        games.add(new Game(game));
+        // Se games è null, potremmo voler lanciare un'eccezione o gestire questa situazione in modo appropriato
+        // Qui eseguiamo solo una stampa di debug per identificare il problema
+        System.out.println("L'arraylist 'games' non è stato correttamente inizializzato.");
+}
 
     public void removeGame(Game game) throws InventoryException {
         if (!games.contains(game)) {
@@ -24,7 +32,7 @@ public class Inventory {
     }
 
     public List<Game> getGames() {
-        return Collections.unmodifiableList(games);
+        return new ArrayList<>(games);
     }
 
     public List<Game> searchGamesByPlatform(String platform) {
@@ -86,6 +94,48 @@ public class Inventory {
         }
         return latestGame;
     }
+    
+    public void printInventoryToFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Game game : games) {
+                writer.write(game.getName() + "," + game.getPlatform() + "," + game.getGenre() + "," + game.getReleaseDate() + "\n");
+            }
+            System.out.println("Inventario stampato su file: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Errore durante la scrittura del file: " + e.getMessage());
+        }
+    }
 
-    // Altri metodi per l'esportazione, l'importazione, ecc. possono essere aggiunti qui
+    // Metodo per leggere l'inventario da file
+    public static Inventory readInventoryFromFile(String filePath) {
+        Inventory inventory = new Inventory();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length != 4) {
+                    System.out.println("Errore: Formato di riga non valido: " + line);
+                    continue; // Ignora questa riga e passa alla successiva
+                }
+                try {
+                    String name = parts[0].trim();
+                    System.out.println(name);
+                    String platform = parts[1].trim();
+                    System.out.println(platform);
+                    String genre = parts[2].trim();
+                    System.out.println(genre);
+                    LocalDate releaseDate = LocalDate.parse(parts[3].trim());
+                    System.out.println(releaseDate);
+                    inventory.addGame(new Game(name, platform, genre, releaseDate));
+                } catch (Exception e) {
+                    System.out.println("Errore durante la lettura della riga: " + line);
+                }
+            }
+            System.out.println("Inventario letto dal file: " + filePath);
+        } catch (IOException e) {
+            System.out.println("Errore durante la lettura del file: " + e.getMessage());
+        }
+        return inventory;
+    }
+
 }

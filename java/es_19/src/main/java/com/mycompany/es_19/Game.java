@@ -2,6 +2,7 @@ package com.mycompany.es_19;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.time.format.DateTimeParseException;
 
 public class Game {
     private final String name;
@@ -14,6 +15,13 @@ public class Game {
         this.platform = platform;
         this.genre = genre;
         this.releaseDate = releaseDate;
+    }
+    
+    public Game(Game g1){
+        this.name = g1.getName();
+        this.platform = g1.getPlatform();
+        this.genre = g1.getGenre();
+        this.releaseDate = g1.getReleaseDate();
     }
 
     // Metodi getter per le informazioni del gioco
@@ -75,14 +83,18 @@ public class Game {
 
     // Metodo per creare un gioco da una stringa formattata per l'importazione
     public static Game fromImportFormat(String data) {
-        String[] parts = data.split(";");
-        if (parts.length != 4) {
-            throw new IllegalArgumentException("Il formato di importazione non è valido: " + data);
+        try {
+            String[] parts = data.split(";");
+            if (parts.length != 4) {
+                throw new IllegalArgumentException("Il formato di importazione non è valido: " + data);
+            }
+            String name = parts[0];
+            String platform = parts[1];
+            String genre = parts[2];
+            LocalDate releaseDate = LocalDate.parse(parts[3]);
+            return new Game(name, platform, genre, releaseDate);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Formato data non valido per il gioco: " + e.getMessage());
         }
-        String name = parts[0];
-        String platform = parts[1];
-        String genre = parts[2];
-        LocalDate releaseDate = LocalDate.parse(parts[3]);
-        return new Game(name, platform, genre, releaseDate);
     }
 }
