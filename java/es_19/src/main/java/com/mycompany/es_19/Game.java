@@ -1,10 +1,12 @@
 package com.mycompany.es_19;
 
-import java.time.LocalDate;
-import java.util.Objects;
+import java.io.*;
+import java.util.*;
+import java.time.*;
 import java.time.format.DateTimeParseException;
 
-public class Game {
+public class Game implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final String name;
     private final String platform;
     private final String genre;
@@ -96,5 +98,23 @@ public class Game {
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException("Formato data non valido per il gioco: " + e.getMessage());
         }
+    }
+    public void serializeGame(String fileName) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            oos.writeObject(this);
+            System.out.println("Gioco serializzato correttamente nel file: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Errore durante la serializzazione del gioco: " + e.getMessage());
+        }
+    }
+    public static Game deserializeGame(String fileName) {
+        Game game = null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            game = (Game) ois.readObject();
+            System.out.println("Gioco deserializzato correttamente dal file: " + fileName);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Errore durante la deserializzazione del gioco: " + e.getMessage());
+        }
+        return game;
     }
 }

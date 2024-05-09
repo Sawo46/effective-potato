@@ -2,45 +2,76 @@ package Test;
 
 import com.mycompany.es_19.Game;
 import com.mycompany.es_19.Inventory;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeAll;
-import java.time.LocalDate;
 import com.mycompany.es_19.InventoryException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InventoryTest {
 
     private Inventory inventory;
-    private Game game1;
-    private Game game2;
+    private Game game;
 
-    @BeforeAll
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         inventory = new Inventory();
-        game1 = new Game("The Witcher 3", "PC", "RPG", LocalDate.of(2015, 5, 19));
-        game2 = new Game("Beat Saber", "VR", "Rhythm", LocalDate.of(2018, 5, 1));
+        LocalDate releaseDate = LocalDate.of(2022, 4, 20);
+        game = new Game("Test Game", "Platform", "Genre", releaseDate);
     }
 
     @Test
-    public void testAddGame() {
-        inventory.addGame(game1);
-        assertTrue(inventory.getGames().contains(game1));
+    void testAddGame() {
+        inventory.addGame(game);
+        List<Game> games = inventory.getGames();
+        assertEquals(1, games.size());
+        assertEquals(game, games.get(0));
     }
 
     @Test
-    public void testRemoveGame() throws InventoryException {
-        inventory.addGame(game1);
-        inventory.addGame(game2);
-        inventory.removeGame(game1);
-        assertFalse(inventory.getGames().contains(game1));
-        assertTrue(inventory.getGames().contains(game2));
+    void testRemoveGame() throws InventoryException {
+        inventory.addGame(game);
+        inventory.removeGame(game);
+        List<Game> games = inventory.getGames();
+        assertTrue(games.isEmpty());
     }
 
     @Test
-    public void testRemoveNonExistentGame() throws InventoryException {
-        inventory.removeGame(game1);
+    void testSearchGamesByPlatform() {
+        inventory.addGame(game);
+        List<Game> gamesFound = inventory.searchGamesByPlatform("Platform");
+        assertEquals(1, gamesFound.size());
+        assertEquals(game, gamesFound.get(0));
     }
 
-    // Aggiungere altri test per i metodi della classe Inventory secondo necessità
+    @Test
+    void testSearchGamesByGenre() {
+        inventory.addGame(game);
+        List<Game> gamesFound = inventory.searchGamesByGenre("Genre");
+        assertEquals(1, gamesFound.size());
+        assertEquals(game, gamesFound.get(0));
+    }
+
+    @Test
+    void testExportInventory() {
+        inventory.addGame(game);
+        String exportedInventory = inventory.exportInventory();
+        assertTrue(exportedInventory.contains("Test Game;Platform;Genre;2022-04-20"));
+    }
+
+    @Test
+    void testImportInventory() {
+        String importedData = "Test Game;Platform;Genre;2022-04-20\n";
+        inventory.importInventory(importedData);
+        List<Game> games = inventory.getGames();
+        assertEquals(1, games.size());
+        Game importedGame = games.get(0);
+        assertEquals("Test Game", importedGame.getName());
+        assertEquals("Platform", importedGame.getPlatform());
+        assertEquals("Genre", importedGame.getGenre());
+        assertEquals(LocalDate.of(2022, 4, 20), importedGame.getReleaseDate());
+    }
 }
-

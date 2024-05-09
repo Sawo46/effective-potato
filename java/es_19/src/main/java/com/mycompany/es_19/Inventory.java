@@ -1,16 +1,11 @@
 package com.mycompany.es_19;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.*;
+import java.time.*;
+import java.util.*;
 
-public class Inventory {
+public class Inventory implements Serializable{
+    private static final long serialVersionUID = 1L;
     private final List<Game> games;
 
     public Inventory() {
@@ -134,6 +129,27 @@ public class Inventory {
             System.out.println("Inventario letto dal file: " + filePath);
         } catch (IOException e) {
             System.out.println("Errore durante la lettura del file: " + e.getMessage());
+        }
+        return inventory;
+    }
+    // Metodo per eseguire la serializzazione dell'oggetto Inventory in un file
+    public void serializeInventory(String fileName) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            oos.writeObject(this);
+            System.out.println("Inventario serializzato correttamente nel file: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Errore durante la serializzazione dell'inventario: " + e.getMessage());
+        }
+    }
+
+    // Metodo per eseguire la deserializzazione di un oggetto Inventory da un file
+    public static Inventory deserializeInventory(String fileName) {
+        Inventory inventory = null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            inventory = (Inventory) ois.readObject();
+            System.out.println("Inventario deserializzato correttamente dal file: " + fileName);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Errore durante la deserializzazione dell'inventario: " + e.getMessage());
         }
         return inventory;
     }
