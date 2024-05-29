@@ -6,6 +6,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * La classe Menu gestisce l'interazione con l'utente tramite un menu a console.
+ * Consente di aggiungere, rimuovere, visualizzare e cercare giochi nell'inventario,
+ * oltre a esportare e importare l'inventario da file.
+ */
 public class Menu {
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -15,6 +20,11 @@ public class Menu {
     private Menu() {
     }
 
+    /**
+     * Restituisce l'istanza singleton del menu.
+     * 
+     * @return l'istanza del menu
+     */
     public static Menu getInstance() {
         if (instance == null) {
             instance = new Menu();
@@ -22,6 +32,11 @@ public class Menu {
         return instance;
     }
 
+    /**
+     * Avvia il ciclo del menu principale per l'interazione con l'utente.
+     * 
+     * @throws ClassNotFoundException se si verifica un problema durante la lettura di file di inventario
+     */
     public void menu() throws ClassNotFoundException {
         boolean exit = false;
         while (!exit) {
@@ -48,6 +63,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Visualizza il menu principale e ottiene la scelta dell'utente.
+     * 
+     * @return la scelta dell'utente come intero
+     */
     private static int displayMenuAndGetChoice() {
         System.out.println("\nMenu:");
         System.out.println("1. Aggiungi gioco");
@@ -63,6 +83,11 @@ public class Menu {
         return Integer.parseInt(scanner.nextLine());
     }
 
+    /**
+     * Aggiunge un nuovo gioco all'inventario.
+     * 
+     * @throws InventoryException se si verifica un problema durante l'aggiunta del gioco
+     */
     private void addGame() throws InventoryException {
         System.out.println("Inserisci le informazioni del gioco:");
 
@@ -90,6 +115,11 @@ public class Menu {
         inventory.addGame(new Game(name, platform, genre, releaseDate));
     }
 
+    /**
+     * Rimuove un gioco dall'inventario in base al nome.
+     * 
+     * @throws InventoryException se si verifica un problema durante la rimozione del gioco
+     */
     private static void removeGame() throws InventoryException {
         System.out.println("Inserisci il nome del gioco da rimuovere:");
         String gameName = scanner.nextLine();
@@ -122,6 +152,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Visualizza tutti i giochi presenti nell'inventario.
+     */
     private static void displayInventory() {
         System.out.println("Inventario dei giochi:");
         for (Game game : inventory.getGames()) {
@@ -129,6 +162,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Cerca giochi nell'inventario in base alla piattaforma.
+     */
     private static void searchGamesByPlatform() {
         System.out.print("Inserisci la piattaforma da cercare: ");
         String platform = scanner.nextLine();
@@ -146,6 +182,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Cerca giochi nell'inventario in base al genere.
+     */
     private static void searchGamesByGenre() {
         System.out.print("Inserisci il genere da cercare: ");
         String genre = scanner.nextLine();
@@ -163,12 +202,22 @@ public class Menu {
         }
     }
 
+    /**
+     * Stampa l'inventario su un file.
+     * 
+     * @throws IOException se si verifica un problema durante la scrittura del file
+     */
     private static void printInventoryToFile() throws IOException {
         System.out.print("Inserisci il nome del file in cui stampare l'inventario: ");
         String fileName = scanner.nextLine();
         inventory.printInventoryToFile(fileName);
     }
 
+    /**
+     * Legge l'inventario da un file.
+     * 
+     * @throws ClassNotFoundException se si verifica un problema durante la lettura del file
+     */
     private static void readInventoryFromFile() throws ClassNotFoundException {
         System.out.print("Inserisci il nome del file da cui leggere l'inventario: ");
         String fileName = scanner.nextLine();
@@ -178,6 +227,4 @@ public class Menu {
         inventory.getGames().addAll(newInventory.getGames());
         System.out.println("Inventario letto correttamente dal file: " + fileName);
     }
-
-
 }

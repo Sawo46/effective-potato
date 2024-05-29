@@ -4,21 +4,38 @@ import java.io.*;
 import java.time.*;
 import java.util.*;
 
-public class Inventory implements Serializable{
+/**
+ * La classe Inventory rappresenta un inventario di videogiochi.
+ * Consente di aggiungere, rimuovere, cercare, esportare e importare giochi.
+ * Implementa l'interfaccia Serializable per consentire la serializzazione e deserializzazione degli oggetti.
+ */
+public class Inventory implements Serializable {
     private static final long serialVersionUID = 1L;
     private final List<Game> games;
 
+    /**
+     * Costruisce un nuovo inventario vuoto.
+     */
     public Inventory() {
         this.games = new ArrayList<>();
     }
 
+    /**
+     * Aggiunge un gioco all'inventario.
+     * 
+     * @param game il gioco da aggiungere
+     */
     public void addGame(Game game) {
         games.add(new Game(game));
-        // Se games è null, potremmo voler lanciare un'eccezione o gestire questa situazione in modo appropriato
-        // Qui eseguiamo solo una stampa di debug per identificare il problema
         System.out.println("L'arraylist 'games' non è stato correttamente inizializzato.");
-}
+    }
 
+    /**
+     * Rimuove un gioco dall'inventario.
+     * 
+     * @param game il gioco da rimuovere
+     * @throws InventoryException se il gioco non è presente nell'inventario
+     */
     public void removeGame(Game game) throws InventoryException {
         if (!games.contains(game)) {
             throw new InventoryException("Il gioco specificato non è presente nell'inventario.");
@@ -26,10 +43,21 @@ public class Inventory implements Serializable{
         games.remove(game);
     }
 
+    /**
+     * Restituisce una copia della lista di giochi nell'inventario.
+     * 
+     * @return una lista di giochi
+     */
     public List<Game> getGames() {
         return new ArrayList<>(games);
     }
 
+    /**
+     * Cerca giochi nell'inventario in base alla piattaforma.
+     * 
+     * @param platform la piattaforma di ricerca
+     * @return una lista di giochi che corrispondono alla piattaforma specificata
+     */
     public List<Game> searchGamesByPlatform(String platform) {
         List<Game> result = new ArrayList<>();
         for (Game game : games) {
@@ -40,6 +68,12 @@ public class Inventory implements Serializable{
         return result;
     }
 
+    /**
+     * Cerca giochi nell'inventario in base al genere.
+     * 
+     * @param genre il genere di ricerca
+     * @return una lista di giochi che corrispondono al genere specificato
+     */
     public List<Game> searchGamesByGenre(String genre) {
         List<Game> result = new ArrayList<>();
         for (Game game : games) {
@@ -50,7 +84,11 @@ public class Inventory implements Serializable{
         return result;
     }
 
-    // Metodo per esportare l'inventario in un formato specifico
+    /**
+     * Esporta l'inventario in un formato specifico.
+     * 
+     * @return una stringa che rappresenta l'inventario esportato
+     */
     public String exportInventory() {
         StringBuilder sb = new StringBuilder();
         for (Game game : games) {
@@ -59,7 +97,11 @@ public class Inventory implements Serializable{
         return sb.toString();
     }
 
-    // Metodo per importare l'inventario da un formato specifico
+    /**
+     * Importa giochi nell'inventario da una stringa di dati formattati.
+     * 
+     * @param data la stringa di dati formattati
+     */
     public void importInventory(String data) {
         String[] lines = data.split("\n");
         for (String line : lines) {
@@ -68,16 +110,24 @@ public class Inventory implements Serializable{
         }
     }
 
-    // Metodo per ottenere la somma delle età di tutti i giochi nell'inventario
+    /**
+     * Calcola la somma delle età di tutti i giochi nell'inventario in anni.
+     * 
+     * @return la somma delle età in anni
+     */
     public int getTotalReleaseAgeInYears() {
         int totalAgeInDays = 0;
         for (Game game : games) {
             totalAgeInDays += game.calculateReleaseAgeInDays();
         }
-        return totalAgeInDays / 365; // Converti da giorni a anni
+        return totalAgeInDays / 365;
     }
 
-    // Metodo per ottenere il gioco più recente nell'inventario
+    /**
+     * Restituisce il gioco più recente nell'inventario.
+     * 
+     * @return il gioco più recente
+     */
     public Game getLatestGame() {
         Game latestGame = null;
         LocalDate latestReleaseDate = LocalDate.MIN;
@@ -89,7 +139,12 @@ public class Inventory implements Serializable{
         }
         return latestGame;
     }
-    
+
+    /**
+     * Stampa l'inventario su un file.
+     * 
+     * @param fileName il nome del file su cui stampare l'inventario
+     */
     public void printInventoryToFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Game game : games) {
@@ -101,7 +156,12 @@ public class Inventory implements Serializable{
         }
     }
 
-    // Metodo per leggere l'inventario da file
+    /**
+     * Legge l'inventario da un file.
+     * 
+     * @param filePath il percorso del file da cui leggere l'inventario
+     * @return l'inventario letto dal file
+     */
     public static Inventory readInventoryFromFile(String filePath) {
         Inventory inventory = new Inventory();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -110,17 +170,13 @@ public class Inventory implements Serializable{
                 String[] parts = line.split(",");
                 if (parts.length != 4) {
                     System.out.println("Errore: Formato di riga non valido: " + line);
-                    continue; // Ignora questa riga e passa alla successiva
+                    continue;
                 }
                 try {
                     String name = parts[0].trim();
-                    System.out.println(name);
                     String platform = parts[1].trim();
-                    System.out.println(platform);
                     String genre = parts[2].trim();
-                    System.out.println(genre);
                     LocalDate releaseDate = LocalDate.parse(parts[3].trim());
-                    System.out.println(releaseDate);
                     inventory.addGame(new Game(name, platform, genre, releaseDate));
                 } catch (Exception e) {
                     System.out.println("Errore durante la lettura della riga: " + line);
@@ -132,7 +188,12 @@ public class Inventory implements Serializable{
         }
         return inventory;
     }
-    // Metodo per eseguire la serializzazione dell'oggetto Inventory in un file
+
+    /**
+     * Serializza l'oggetto Inventory in un file.
+     * 
+     * @param fileName il nome del file in cui salvare l'oggetto serializzato
+     */
     public void serializeInventory(String fileName) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(this);
@@ -142,7 +203,12 @@ public class Inventory implements Serializable{
         }
     }
 
-    // Metodo per eseguire la deserializzazione di un oggetto Inventory da un file
+    /**
+     * Deserializza un oggetto Inventory da un file.
+     * 
+     * @param fileName il nome del file da cui leggere l'oggetto serializzato
+     * @return l'oggetto Inventory deserializzato
+     */
     public static Inventory deserializeInventory(String fileName) {
         Inventory inventory = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
@@ -153,5 +219,4 @@ public class Inventory implements Serializable{
         }
         return inventory;
     }
-
 }
