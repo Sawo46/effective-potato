@@ -1,0 +1,72 @@
+Requisiti Funzionali
+1. Gestione dell'Inventario
+Aggiungere un gioco all'inventario:
+L'utente deve essere in grado di inserire un nuovo gioco con le seguenti informazioni: nome, piattaforma, genere e data di rilascio.
+Rimuovere un gioco dall'inventario:
+L'utente deve poter rimuovere un gioco esistente specificando il nome del gioco.
+Se esistono più giochi con lo stesso nome, l'utente deve poter selezionare quale gioco rimuovere.
+Visualizzare l'inventario:
+L'utente deve poter visualizzare una lista di tutti i giochi presenti nell'inventario, comprensiva delle informazioni: nome, piattaforma, genere e data di rilascio.
+Ricercare giochi per piattaforma:
+L'utente deve poter cercare e visualizzare tutti i giochi per una specifica piattaforma.
+Ricercare giochi per genere:
+L'utente deve poter cercare e visualizzare tutti i giochi di un specifico genere.
+2. Gestione File
+Esportare l'inventario su un file:
+L'utente deve poter salvare l'inventario corrente in un file di testo.
+Importare l'inventario da un file:
+L'utente deve poter leggere un inventario da un file di testo e caricarlo nel sistema.
+3. Serializzazione
+Serializzare l'inventario:
+Il sistema deve poter salvare l'inventario in un file binario usando la serializzazione Java.
+Deserializzare l'inventario:
+Il sistema deve poter leggere l'inventario da un file binario e caricarlo nel sistema.
+Requisiti Non Funzionali
+1. Usabilità
+Interfaccia Utente:
+Il sistema deve fornire un'interfaccia utente basata su console semplice e intuitiva per l'interazione con l'utente.
+2. Affidabilità
+Gestione Errori:
+Il sistema deve gestire in modo appropriato gli errori di input e di I/O, fornendo messaggi di errore chiari all'utente.
+3. Prestazioni
+Tempo di Risposta:
+Il sistema deve rispondere rapidamente alle operazioni comuni (aggiunta, rimozione, visualizzazione dei giochi).
+4. Manutenibilità
+Codice Modulare:
+Il sistema deve essere progettato in modo modulare, con classi e metodi ben definiti, per facilitare la manutenzione e l'estensione futura.
+Requisiti di Sistema
+1. Ambiente di Esecuzione
+Piattaforma:
+Il sistema deve essere eseguibile su qualsiasi sistema operativo che supporti Java.
+2. Dipendenze
+Librerie:
+Il sistema deve utilizzare solo librerie standard di Java SE per garantire la portabilità.
+Use Case
+Use Case 1: Aggiungere un Gioco
+Attore: Utente
+Precondizione: Il sistema è in esecuzione e l'utente è nel menu principale.
+Scenario Principale:
+L'utente seleziona l'opzione per aggiungere un gioco.
+Il sistema richiede i dettagli del gioco (nome, piattaforma, genere, data di rilascio).
+L'utente inserisce i dettagli richiesti.
+Il sistema aggiunge il gioco all'inventario e conferma l'operazione.
+Postcondizione: Il nuovo gioco è presente nell'inventario.
+Use Case 2: Rimuovere un Gioco
+Attore: Utente
+Precondizione: Il sistema è in esecuzione e l'utente è nel menu principale.
+Scenario Principale:
+L'utente seleziona l'opzione per rimuovere un gioco.
+Il sistema richiede il nome del gioco da rimuovere.
+L'utente inserisce il nome del gioco.
+Se esistono più giochi con lo stesso nome, il sistema richiede di selezionare quale gioco rimuovere.
+Il sistema rimuove il gioco selezionato dall'inventario e conferma l'operazione.
+Postcondizione: Il gioco specificato non è più presente nell'inventario.
+Use Case 3: Esportare l'Inventario su File
+Attore: Utente
+Precondizione: Il sistema è in esecuzione e l'utente è nel menu principale.
+Scenario Principale:
+L'utente seleziona l'opzione per esportare l'inventario su un file.
+Il sistema richiede il nome del file di destinazione.
+L'utente inserisce il nome del file.
+Il sistema salva l'inventario nel file specificato e conferma l'operazione.
+Postcondizione: L'inventario è stato salvato nel file specificato.
