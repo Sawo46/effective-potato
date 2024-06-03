@@ -1,0 +1,475 @@
+Caso di Test 1.1: Aggiungere un gioco con dati validi
+Descrizione: Verificare che un gioco possa essere aggiunto correttamente all'inventario con dati validi.
+Passi da seguire:
+Avviare il sistema e accedere al menu principale.
+Selezionare l'opzione per aggiungere un gioco.
+Inserire i seguenti dettagli del gioco:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Confermare l'operazione.
+Visualizzare l'inventario per verificare l'aggiunta del gioco.
+Dati di input:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Risultati attesi: Il gioco "The Legend of Zelda" deve essere presente nell'inventario con i dettagli forniti.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 1.2: Aggiungere un gioco con data di rilascio non valida
+Descrizione: Verificare che il sistema gestisca correttamente l'input di una data di rilascio non valida.
+Passi da seguire:
+Avviare il sistema e accedere al menu principale.
+Selezionare l'opzione per aggiungere un gioco.
+Inserire i seguenti dettagli del gioco:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "data-non-valida"
+Confermare l'operazione.
+Dati di input:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "data-non-valida"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che la data di rilascio non è valida.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 1.3: Aggiungere un gioco con campi vuoti
+Descrizione: Verificare che il sistema gestisca correttamente l'input di campi vuoti.
+Passi da seguire:
+Avviare il sistema e accedere al menu principale.
+Selezionare l'opzione per aggiungere un gioco.
+Inserire i seguenti dettagli del gioco:
+Nome: ""
+Piattaforma: ""
+Genere: ""
+Data di rilascio: ""
+Confermare l'operazione.
+Dati di input:
+Nome: ""
+Piattaforma: ""
+Genere: ""
+Data di rilascio: ""
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che i campi non possono essere vuoti.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 1.4: Aggiungere un gioco già presente nell'inventario
+Descrizione: Verificare che il sistema consenta l'aggiunta di un gioco con lo stesso nome ma su piattaforme diverse.
+Passi da seguire:
+Aggiungere il gioco "The Legend of Zelda" con la piattaforma "Nintendo Switch" e data di rilascio "2017-03-03".
+Ripetere l'operazione per aggiungere un gioco con lo stesso nome ma piattaforma diversa:
+Nome: "The Legend of Zelda"
+Piattaforma: "Wii U"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Confermare l'operazione.
+Visualizzare l'inventario per verificare la presenza di entrambi i giochi.
+Dati di input:
+Nome: "The Legend of Zelda"
+Piattaforma: "Wii U"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Risultati attesi: Entrambi i giochi con nome "The Legend of Zelda" devono essere presenti nell'inventario con piattaforme diverse.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 1.5: Aggiungere un gioco con la stessa data di rilascio ma piattaforma diversa
+Descrizione: Verificare che il sistema consenta l'aggiunta di giochi con la stessa data di rilascio ma piattaforme diverse.
+Passi da seguire:
+Aggiungere il gioco "FIFA 21" con la piattaforma "PS4" e data di rilascio "2020-10-09".
+Ripetere l'operazione per aggiungere un gioco con la stessa data di rilascio ma piattaforma diversa:
+Nome: "FIFA 21"
+Piattaforma: "Xbox One"
+Genere: "Sports"
+Data di rilascio: "2020-10-09"
+Confermare l'operazione.
+Visualizzare l'inventario per verificare la presenza di entrambi i giochi.
+Dati di input:
+Nome: "FIFA 21"
+Piattaforma: "Xbox One"
+Genere: "Sports"
+Data di rilascio: "2020-10-09"
+Risultati attesi: Entrambi i giochi con nome "FIFA 21" devono essere presenti nell'inventario con piattaforme diverse.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 2.1: Rimuovere un gioco presente nell'inventario
+Descrizione: Verificare che un gioco possa essere rimosso correttamente dall'inventario se è presente.
+Passi da seguire:
+Aggiungere il gioco "The Legend of Zelda" con la piattaforma "Nintendo Switch" e data di rilascio "2017-03-03".
+Selezionare l'opzione per rimuovere un gioco.
+Inserire il nome "The Legend of Zelda".
+Se il gioco è presente più volte, selezionare quello con piattaforma "Nintendo Switch".
+Confermare l'operazione.
+Visualizzare l'inventario per verificare la rimozione del gioco.
+Dati di input:
+Nome: "The Legend of Zelda"
+Risultati attesi: Il gioco "The Legend of Zelda" deve essere rimosso dall'inventario.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 2.2: Rimuovere un gioco non presente nell'inventario
+Descrizione: Verificare che il sistema gestisca correttamente il tentativo di rimuovere un gioco non presente nell'inventario.
+Passi da seguire:
+Selezionare l'opzione per rimuovere un gioco.
+Inserire il nome "Nonexistent Game".
+Confermare l'operazione.
+Dati di input:
+Nome: "Nonexistent Game"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che il gioco non è presente nell'inventario.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 2.3: Rimuovere un gioco con nome duplicato
+Descrizione: Verificare che il sistema gestisca correttamente il tentativo di rimuovere un gioco quando esistono più giochi con lo stesso nome.
+Passi da seguire:
+Aggiungere due giochi con lo stesso nome ma piattaforme diverse:
+Nome: "FIFA 21"
+Piattaforma: "PS4"
+Data di rilascio: "2020-10-09"
+Nome: "FIFA 21"
+Piattaforma: "Xbox One"
+Data di rilascio: "2020-10-09"
+Selezionare l'opzione per rimuovere un gioco.
+Inserire il nome "FIFA 21".
+Selezionare il gioco con piattaforma "PS4".
+Confermare l'operazione.
+Visualizzare l'inventario per verificare la rimozione del gioco.
+Dati di input:
+Nome: "FIFA 21"
+Risultati attesi: Il gioco "FIFA 21" con piattaforma "PS4" deve essere rimosso dall'inventario, mentre quello con piattaforma "Xbox One" deve rimanere.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 2.4: Rimuovere un gioco con input non valido
+Descrizione: Verificare che il sistema gestisca correttamente l'input non valido durante la rimozione di un gioco.
+Passi da seguire:
+Selezionare l'opzione per rimuovere un gioco.
+Inserire un input non valido (ad esempio, un numero o un carattere speciale).
+Confermare l'operazione.
+Dati di input:
+Nome: "@InvalidGameName"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che l'input non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Piano di Test 3: Visualizzare l'Inventario
+Caso di Test 3.1: Visualizzare un inventario vuoto
+Descrizione: Verificare che il sistema visualizzi correttamente un messaggio appropriato quando l'inventario è vuoto.
+Passi da seguire:
+Assicurarsi che l'inventario sia vuoto.
+Selezionare l'opzione per visualizzare l'inventario.
+Dati di input: Nessuno
+Risultati attesi: Il sistema deve visualizzare un messaggio indicando che l'inventario è vuoto.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 3.2: Visualizzare un inventario con giochi
+Descrizione: Verificare che il sistema visualizzi correttamente i giochi presenti nell'inventario.
+Passi da seguire:
+Aggiungere alcuni giochi all'inventario:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Nome: "FIFA 21"
+Piattaforma: "PS4"
+Genere: "Sports"
+Data di rilascio: "2020-10-09"
+Selezionare l'opzione per visualizzare l'inventario.
+Dati di input: Nessuno
+Risultati attesi: Il sistema deve visualizzare i dettagli dei giochi presenti nell'inventario.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 4.1: Ricercare giochi per una piattaforma esistente
+Descrizione: Verificare che il sistema visualizzi correttamente i giochi presenti nell'inventario per una piattaforma specifica.
+Passi da seguire:
+Aggiungere alcuni giochi all'inventario:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Nome: "FIFA 21"
+Piattaforma: "PS4"
+Genere: "Sports"
+Data di rilascio: "2020-10-09"
+Selezionare l'opzione per ricercare giochi per piattaforma.
+Inserire "Nintendo Switch".
+Dati di input:
+Piattaforma: "Nintendo Switch"
+Risultati attesi: Il sistema deve visualizzare il gioco "The Legend of Zelda".
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 4.2: Ricercare giochi per una piattaforma non esistente
+Descrizione: Verificare che il sistema gestisca correttamente la ricerca di giochi per una piattaforma che non ha giochi associati.
+Passi da seguire:
+Selezionare l'opzione per ricercare giochi per piattaforma.
+Inserire "PC".
+Dati di input:
+Piattaforma: "PC"
+Risultati attesi: Il sistema deve visualizzare un messaggio indicando che non ci sono giochi per la piattaforma specificata.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 4.3: Ricercare giochi con input non valido
+Descrizione: Verificare che il sistema gestisca correttamente l'input non valido durante la ricerca di giochi per piattaforma.
+Passi da seguire:
+Selezionare l'opzione per ricercare giochi per piattaforma.
+Inserire un input non valido (ad esempio, un numero o un carattere speciale).
+Dati di input:
+Piattaforma: "12345"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che l'input non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Piano di Test 5: Ricerca di Giochi per Genere
+Caso di Test 5.1: Ricercare giochi per un genere esistente
+Descrizione: Verificare che il sistema visualizzi correttamente i giochi presenti nell'inventario per un genere specifico.
+Passi da seguire:
+Aggiungere alcuni giochi all'inventario:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Nome: "FIFA 21"
+Piattaforma: "PS4"
+Genere: "Sports"
+Data di rilascio: "2020-10-09"
+Selezionare l'opzione per ricercare giochi per genere.
+Inserire "Adventure".
+Dati di input:
+Genere: "Adventure"
+Risultati attesi: Il sistema deve visualizzare il gioco "The Legend of Zelda".
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 5.2: Ricercare giochi per un genere non esistente
+Descrizione: Verificare che il sistema gestisca correttamente la ricerca di giochi per un genere che non ha giochi associati.
+Passi da seguire:
+Selezionare l'opzione per ricercare giochi per genere.
+Inserire "Horror".
+Dati di input:
+Genere: "Horror"
+Risultati attesi: Il sistema deve visualizzare un messaggio indicando che non ci sono giochi per il genere specificato.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 5.3: Ricercare giochi con input non valido
+Descrizione: Verificare che il sistema gestisca correttamente l'input non valido durante la ricerca di giochi per genere.
+Passi da seguire:
+Selezionare l'opzione per ricercare giochi per genere.
+Inserire un input non valido (ad esempio, un numero o un carattere speciale).
+Dati di input:
+Genere: "@InvalidGenre"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che l'input non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 6.1: Stampa dell'inventario su file con giochi presenti
+Descrizione: Verificare che il sistema stampi correttamente l'inventario su un file quando ci sono giochi presenti.
+Passi da seguire:
+Aggiungere alcuni giochi all'inventario:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Nome: "FIFA 21"
+Piattaforma: "PS4"
+Genere: "Sports"
+Data di rilascio: "2020-10-09"
+Selezionare l'opzione per stampare l'inventario su file.
+Inserire un nome di file valido (es. "inventario.txt").
+Dati di input:
+Nome file: "inventario.txt"
+Risultati attesi: Il file "inventario.txt" deve essere creato e contenere i dettagli dei giochi presenti nell'inventario.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 6.2: Stampa dell'inventario su file con inventario vuoto
+Descrizione: Verificare che il sistema gestisca correttamente la stampa su file quando l'inventario è vuoto.
+Passi da seguire:
+Assicurarsi che l'inventario sia vuoto.
+Selezionare l'opzione per stampare l'inventario su file.
+Inserire un nome di file valido (es. "inventario_vuoto.txt").
+Dati di input:
+Nome file: "inventario_vuoto.txt"
+Risultati attesi: Il file "inventario_vuoto.txt" deve essere creato e deve essere vuoto o contenere un messaggio che indica che l'inventario è vuoto.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 6.3: Stampa dell'inventario su file con nome file non valido
+Descrizione: Verificare che il sistema gestisca correttamente l'input di un nome file non valido durante la stampa dell'inventario su file.
+Passi da seguire:
+Aggiungere alcuni giochi all'inventario.
+Selezionare l'opzione per stampare l'inventario su file.
+Inserire un nome di file non valido (es. "inventario:/invalid.txt").
+Dati di input:
+Nome file: "inventario:/invalid.txt"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che il nome del file non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Piano di Test 7: Lettura dell'Inventario da File
+Caso di Test 7.1: Lettura dell'inventario da un file valido
+Descrizione: Verificare che il sistema legga correttamente l'inventario da un file esistente e valido.
+Passi da seguire:
+Creare un file di inventario valido con alcuni giochi (es. "inventario.txt").
+Selezionare l'opzione per leggere l'inventario da file.
+Inserire il nome del file (es. "inventario.txt").
+Dati di input:
+Nome file: "inventario.txt"
+Risultati attesi: L'inventario deve essere aggiornato con i giochi presenti nel file.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 7.2: Lettura dell'inventario da un file non esistente
+Descrizione: Verificare che il sistema gestisca correttamente il tentativo di leggere l'inventario da un file non esistente.
+Passi da seguire:
+Selezionare l'opzione per leggere l'inventario da file.
+Inserire un nome di file che non esiste (es. "non_esiste.txt").
+Dati di input:
+Nome file: "non_esiste.txt"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che il file non esiste.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 7.3: Lettura dell'inventario da un file con formato non valido
+Descrizione: Verificare che il sistema gestisca correttamente il tentativo di leggere l'inventario da un file con formato non valido.
+Passi da seguire:
+Creare un file con un formato non valido (es. "inventario_non_valido.txt").
+Selezionare l'opzione per leggere l'inventario da file.
+Inserire il nome del file (es. "inventario_non_valido.txt").
+Dati di input:
+Nome file: "inventario_non_valido.txt"
+Risultati attesi: Il sistema deve visualizzare un messaggio di errore indicando che il formato del file non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Piano di Test 8: Serializzazione e Deserializzazione dell'Inventario
+Caso di Test 8.1: Serializzazione dell'inventario con giochi presenti
+Descrizione: Verificare che il sistema serializzi correttamente l'inventario su un file quando ci sono giochi presenti.
+Passi da seguire:
+Aggiungere alcuni giochi all'inventario:
+Nome: "The Legend of Zelda"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Selezionare l'opzione per serializzare l'inventario.
+Inserire un nome di file valido (es. "inventario_serializzato.dat").
+Dati di input:
+Nome file: "inventario_serializzato.dat"
+Risultati attesi: Il file "inventario_serializzato.dat" deve essere creato e contenere l'inventario serializzato.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 8.2: Deserializzazione dell'inventario da un file valido
+Descrizione: Verificare che il sistema deserializzi correttamente l'inventario da un file valido.
+Passi da seguire:
+Assicurarsi di avere un file di inventario serializzato valido (es. "inventario_serializzato.dat").
+Selezionare l'opzione per deserializzare l'inventario.
+Inserire il nome del file (es. "inventario_serializzato.dat").
+Dati di input:
+Nome file: "inventario_serializzato.dat"
+Risultati attesi: L'inventario deve essere aggiornato con i giochi presenti nel file serializzato.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 9.1: Ricerca di giochi per piattaforma con risultati
+Descrizione: Verificare che il sistema trovi correttamente i giochi per una piattaforma specifica quando ci sono risultati corrispondenti.
+Passi da seguire:
+Aggiungere i seguenti giochi all'inventario:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "2017-10-27"
+Nome: "The Legend of Zelda: Breath of the Wild"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Selezionare l'opzione per cercare giochi per piattaforma.
+Inserire "Nintendo Switch" come piattaforma.
+Dati di input:
+Piattaforma: "Nintendo Switch"
+Risultati attesi: Il sistema deve elencare entrambi i giochi aggiunti.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 9.2: Ricerca di giochi per piattaforma senza risultati
+Descrizione: Verificare che il sistema gestisca correttamente la ricerca di giochi per una piattaforma specifica quando non ci sono risultati corrispondenti.
+Passi da seguire:
+Assicurarsi che l'inventario contenga giochi, ma non per la piattaforma "Xbox One".
+Selezionare l'opzione per cercare giochi per piattaforma.
+Inserire "Xbox One" come piattaforma.
+Dati di input:
+Piattaforma: "Xbox One"
+Risultati attesi: Il sistema deve visualizzare un messaggio che indica che non sono stati trovati giochi per la piattaforma specificata.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 9.3: Ricerca di giochi per piattaforma con input non valido
+Descrizione: Verificare che il sistema gestisca correttamente un input di piattaforma non valido durante la ricerca di giochi per piattaforma.
+Passi da seguire:
+Assicurarsi che l'inventario contenga giochi.
+Selezionare l'opzione per cercare giochi per piattaforma.
+Inserire una stringa vuota come piattaforma.
+Dati di input:
+Piattaforma: ""
+Risultati attesi: Il sistema deve visualizzare un messaggio che indica che l'input della piattaforma non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Piano di Test 10: Ricerca dei Giochi per Genere
+Caso di Test 10.1: Ricerca di giochi per genere con risultati
+Descrizione: Verificare che il sistema trovi correttamente i giochi per un genere specifico quando ci sono risultati corrispondenti.
+Passi da seguire:
+Aggiungere i seguenti giochi all'inventario:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "2017-10-27"
+Nome: "The Legend of Zelda: Breath of the Wild"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Selezionare l'opzione per cercare giochi per genere.
+Inserire "Platform" come genere.
+Dati di input:
+Genere: "Platform"
+Risultati attesi: Il sistema deve elencare il gioco "Super Mario Odyssey".
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 10.2: Ricerca di giochi per genere senza risultati
+Descrizione: Verificare che il sistema gestisca correttamente la ricerca di giochi per un genere specifico quando non ci sono risultati corrispondenti.
+Passi da seguire:
+Assicurarsi che l'inventario contenga giochi, ma non per il genere "Horror".
+Selezionare l'opzione per cercare giochi per genere.
+Inserire "Horror" come genere.
+Dati di input:
+Genere: "Horror"
+Risultati attesi: Il sistema deve visualizzare un messaggio che indica che non sono stati trovati giochi per il genere specificato.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 10.3: Ricerca di giochi per genere con input non valido
+Descrizione: Verificare che il sistema gestisca correttamente un input di genere non valido durante la ricerca di giochi per genere.
+Passi da seguire:
+Assicurarsi che l'inventario contenga giochi.
+Selezionare l'opzione per cercare giochi per genere.
+Inserire una stringa vuota come genere.
+Dati di input:
+Genere: ""
+Risultati attesi: Il sistema deve visualizzare un messaggio che indica che l'input del genere non è valido.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Piano di Test 11: Calcolo dell'Età Totale dei Giochi nell'Inventario
+Caso di Test 11.1: Calcolo dell'età totale con giochi presenti
+Descrizione: Verificare che il sistema calcoli correttamente l'età totale in anni dei giochi presenti nell'inventario.
+Passi da seguire:
+Aggiungere i seguenti giochi all'inventario:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "2017-10-27"
+Nome: "The Legend of Zelda: Breath of the Wild"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Selezionare l'opzione per calcolare l'età totale dei giochi.
+Dati di input: (nessun input richiesto)
+Risultati attesi: Il sistema deve visualizzare l'età totale in anni dei giochi presenti nell'inventario.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 11.2: Calcolo dell'età totale con inventario vuoto
+Descrizione: Verificare che il sistema gestisca correttamente il calcolo dell'età totale quando l'inventario è vuoto.
+Passi da seguire:
+Assicurarsi che l'inventario sia vuoto.
+Selezionare l'opzione per calcolare l'età totale dei giochi.
+Dati di input: (nessun input richiesto)
+Risultati attesi: Il sistema deve visualizzare "0" o un messaggio appropriato che indica che l'inventario è vuoto.
+Risultati effettivi: (da compilare durante l'esecuzione)Caso di Test 12.1: Ottenere il gioco più recente con più giochi presenti
+Descrizione: Verificare che il sistema identifichi correttamente il gioco più recente tra quelli presenti nell'inventario.
+Passi da seguire:
+Aggiungere i seguenti giochi all'inventario:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "2017-10-27"
+Nome: "The Legend of Zelda: Breath of the Wild"
+Piattaforma: "Nintendo Switch"
+Genere: "Adventure"
+Data di rilascio: "2017-03-03"
+Nome: "Animal Crossing: New Horizons"
+Piattaforma: "Nintendo Switch"
+Genere: "Simulation"
+Data di rilascio: "2020-03-20"
+Selezionare l'opzione per ottenere il gioco più recente.
+Dati di input: (nessun input richiesto)
+Risultati attesi: Il sistema deve identificare "Animal Crossing: New Horizons" come il gioco più recente.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 12.2: Ottenere il gioco più recente con un solo gioco presente
+Descrizione: Verificare che il sistema identifichi correttamente il gioco più recente quando è presente un solo gioco nell'inventario.
+Passi da seguire:
+Assicurarsi che l'inventario contenga solo un gioco:
+Nome: "Super Mario Odyssey"
+Piattaforma: "Nintendo Switch"
+Genere: "Platform"
+Data di rilascio: "2017-10-27"
+Selezionare l'opzione per ottenere il gioco più recente.
+Dati di input: (nessun input richiesto)
+Risultati attesi: Il sistema deve identificare "Super Mario Odyssey" come il gioco più recente.
+Risultati effettivi: (da compilare durante l'esecuzione)
+Caso di Test 12.3: Ottenere il gioco più recente con inventario vuoto
+Descrizione: Verificare che il sistema gestisca correttamente la richiesta di ottenere il gioco più recente quando l'inventario è vuoto.
+Passi da seguire:
+Assicurarsi che l'inventario sia vuoto.
+Selezionare l'opzione per ottenere il gioco più recente.
+Dati di input: (nessun input richiesto)
+Risultati attesi: Il sistema deve visualizzare un messaggio appropriato che indica che l'inventario è vuoto e non ci sono giochi da visualizzare.
+Risultati effettivi: (da compilare durante l'esecuzione)
